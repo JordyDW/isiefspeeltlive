@@ -4,17 +4,17 @@ block content
   .wrapper
     header Is #{user.display_name} live?
     .content-wrapper
-      img(src=user.profile_image_url)
+      img(src=user.profile_image_url).profile-pic
       .content
         - if (stream != null)
           span.yes JA!
-          span 😁
+          img(src='images/dab.png')
           p Ga nu live kijken op 
             a(href='https://twitch.tv/#{user.login}') Twitch
             |  !!
         - else 
           span.no NEEN!
-          span 😢
+          img(src='images/scared.png')
           p Hopelijk snel terug live op 
             a(href='https://twitch.tv/#{user.login}') Twitch
             |  of check eens de 

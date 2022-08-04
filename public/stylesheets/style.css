@@ -39,6 +39,9 @@ footer {
 
 .content-wrapper img {
   width: 200px;
+}
+
+.content-wrapper img.profile-pic {
   border-radius: 50%;
 }
 

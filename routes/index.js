@@ -10,17 +10,26 @@ var name = 'ief_speelt';
 
 /* GET home page. */
 router.get('/', async function (req, res, next) {
-  access_token = await getAccessToken();
+  try {
+    access_token = await getAccessToken();
 
-  var stream = await getStream(name);
-  var user = await getUser(name);
+    var stream = await getStream(name);
+    var user = await getUser(name);
 
-  res.render('index', { user, stream });
+    res.render('index', { user, stream });
+  } catch (e) {
+    console.log(e);
+  }
 });
 
 async function getAccessToken () {
-  var res = await axios.post(`https://id.twitch.tv/oauth2/token?client_id=${client_id}&client_secret=${client_secret}&grant_type=client_credentials`, null);
-  return res.data.access_token;
+  try {
+    var res = await axios.post(`https://id.twitch.tv/oauth2/token?client_id=${client_id}&client_secret=${client_secret}&grant_type=client_credentials`, null);
+    return res.data.access_token;
+  } catch (e) {
+    console.error(e);
+  }
+
 }
 
 async function getStream (channel_name) {
